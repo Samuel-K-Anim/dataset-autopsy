@@ -347,38 +347,40 @@ if st.session_state.df_main is not None:
             try:
                 csv = st.session_state.df_main.to_csv(index=False).encode('utf-8')
                 st.download_button("📥 Download Cleaned CSV", csv, f"cleaned_{uploaded_file.name}", "text/csv")
-            except Exception as e:
-                st.error(f"Error generating CSV: {e}")
+            except:
+                st.error("File not found. Please re-upload your dataset.")
 
             # 2. Generate PDF Report
             st.write("---")
             st.write("Generate a professional report detailing your edits and the data's health.")
-            
-            if st.button("📄 Generate Professional PDF Report"):
-                # Re-run final diagnostics on cleaned data
-                final_stats = coroner.get_vital_signs()
-                final_missing = coroner.check_missing()
-                final_outliers = coroner.check_outliers_iqr()
-                final_skew = coroner.check_skewness()
-                final_rec = coroner.generate_recommendations()
-                
-                pdf_data = generate_pdf_report(
-                    uploaded_file.name,
-                    final_stats,
-                    final_missing,
-                    final_outliers,
-                    final_skew,
-                    final_rec["recommendations"],
-                    final_rec["score"],
-                    change_log=st.session_state.change_log,
-                    impact_summary=impact
-                )
-                
-                st.download_button(
-                    label="⬇️ Download PDF Report",
-                    data=pdf_data,
-                    file_name="Impact_Report.pdf",
-                    mime="application/pdf"
-                )
+            try:
+                if st.button("📄 Generate Professional PDF Report"):
+                    # Re-run final diagnostics on cleaned data
+                    final_stats = coroner.get_vital_signs()
+                    final_missing = coroner.check_missing()
+                    final_outliers = coroner.check_outliers_iqr()
+                    final_skew = coroner.check_skewness()
+                    final_rec = coroner.generate_recommendations()
+                    
+                    pdf_data = generate_pdf_report(
+                        uploaded_file.name,
+                        final_stats,
+                        final_missing,
+                        final_outliers,
+                        final_skew,
+                        final_rec["recommendations"],
+                        final_rec["score"],
+                        change_log=st.session_state.change_log,
+                        impact_summary=impact
+                    )
+                    
+                    st.download_button(
+                        label="⬇️ Download PDF Report",
+                        data=pdf_data,
+                        file_name="Impact_Report.pdf",
+                        mime="application/pdf"
+                    )
+            except:
+                st.error("Error generating report. Please ensure a dataset is uploaded.")
 else:
     st.info("👈Please upload a dataset to begin the autopsy.")
