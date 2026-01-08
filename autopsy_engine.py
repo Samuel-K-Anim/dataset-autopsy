@@ -273,7 +273,7 @@ class DataHealer:
             lower = Q1 - (factor * IQR)
             upper = Q3 + (factor * IQR)
 
-            self.df[col] = self.df[col].clip(lower=lower_bound, upper=upper_bound)
+            self.df[col] = self.df[col].clip(lower=lower, upper=upper)
         return self.df
 
     # --- 4. SKEWNESS CORRECTION ---
