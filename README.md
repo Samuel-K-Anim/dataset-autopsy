@@ -3,6 +3,8 @@
 A modular, Object-Oriented Data Science tool designed to automate Exploratory Data Analysis (EDA) and Data Cleaning. Acting as both a "Coroner" and a "Surgeon," this application helps users diagnose data quality issues and interactively fix them without writing a single line of code.
 
 🔗 **[Live Demo App](https://dataset-autopsy-lab-ask.streamlit.app)**
+
+
 ---
 
 ## 🚀 Key Features
@@ -80,6 +82,7 @@ An interactive interface to clean your data step-by-step:
     streamlit run app.py
 ```
 
+---
 
 ## 📁 Project Structure
 ```text
@@ -89,10 +92,10 @@ An interactive interface to clean your data step-by-step:
 ├── requirements.txt       # List of Python libraries
 └── .streamlit/
     └── config.toml        # Server configuration (Upload limits)
+```
 
-
-🌟 Acknowledgements
+### 🌟 Acknowledgements
 
 Built as part of a Data Science portfolio project demonstrating advanced EDA, Object-Oriented Programming, and Software Engineering principles in Data Science.
 
-Author: Samuel K. Anim
+`Author: Samuel K. Anim`
