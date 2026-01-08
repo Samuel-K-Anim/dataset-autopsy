@@ -344,9 +344,12 @@ if st.session_state.df_main is not None:
             
             # 1. Download Cleaned Data
             st.write("### 📥 Download Cleaned Dataset")
-            csv = df.to_csv(index=False).encode('utf-8')
-            st.download_button("📥 Download Cleaned CSV", csv, f"clean_{uploaded_file.name}", "text/csv")
-            
+            try:
+                csv = st.session_state.df_main.to_csv(index=False).encode('utf-8')
+                st.download_button("📥 Download Cleaned CSV", csv, f"cleaned_{uploaded_file.name}", "text/csv")
+            except Exception as e:
+                st.error(f"Error generating CSV: {e}")
+
             # 2. Generate PDF Report
             st.write("---")
             st.write("Generate a professional report detailing your edits and the data's health.")
