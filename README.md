@@ -2,7 +2,7 @@
 
 A modular, Object-Oriented Data Science tool designed to automate Exploratory Data Analysis (EDA) and Data Cleaning. Acting as both a "Coroner" and a "Surgeon," this application helps users diagnose data quality issues and interactively fix them without writing a single line of code.
 
-🔗 **[Live Demo App](https://dataset-autopsy-lab-xyz.streamlit.app)**
+🔗 **[Live Demo App](https://dataset-autopsy-lab-ask.streamlit.app)**
 ---
 
 ## 🚀 Key Features
