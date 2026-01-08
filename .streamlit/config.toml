@@ -1,0 +1,3 @@
+[server]
+# Increase limit to 10000MB (10GB)
+maxUploadSize = 1000
